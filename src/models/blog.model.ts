@@ -4,6 +4,7 @@ interface IBlog {
   title: string;
   content: string;
   author: string;
+  createdAt: Date;
 }
 
 const blogSchema = new Schema({
@@ -18,6 +19,11 @@ const blogSchema = new Schema({
   author: {
     type: String,
     required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    immutable: true,
   },
 });
 

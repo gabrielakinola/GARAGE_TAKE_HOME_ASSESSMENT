@@ -41,7 +41,7 @@ const updatePost = async (req: Request, res: Response) => {
   const { postId } = req.params;
   try {
     const blog = await Blog.findByIdAndUpdate(
-      { _id: postId },
+      postId,
       {
         title,
         content,
@@ -60,7 +60,7 @@ const updatePost = async (req: Request, res: Response) => {
 const deletePost = async (req: Request, res: Response) => {
   const { postId } = req.params;
   try {
-    const blog = await Blog.findByIdAndDelete({ _id: postId });
+    const blog = await Blog.findByIdAndDelete(postId);
     if (!blog) {
       return res.status(404).send();
     }
